@@ -7,7 +7,7 @@ function BookDetails() {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/books/${id}`)
+    axios.get(`https://libarymanagement-dzib.onrender.com/api/books/${id}`)
       .then(response => setBook(response.data))
       .catch(error => console.error("Error fetching book:", error));
   }, [id]);
