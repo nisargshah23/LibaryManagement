@@ -15,7 +15,7 @@ function Dashboard() {
   // ✅ Fetch Books from API
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/books/");
+      const response = await axios.get("https://libarymanagement-dzib.onrender.com/api/books/");
       setBooks(response.data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -28,7 +28,7 @@ function Dashboard() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/books/${bookId}`, {
+      await axios.delete(`https://libarymanagement-dzib.onrender.com/api/books/${bookId}`, {
         headers: { Authorization: localStorage.getItem("token") }
       });
       setBooks(books.filter(book => book._id !== bookId));

@@ -21,7 +21,7 @@ const EditBook = () => {
   // ✅ Fetch book details by ID
   const fetchBookDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/${id}`);
+      const response = await axios.get(`https://libarymanagement-dzib.onrender.com/api/auth/${id}`);
       setBook(response.data);
     } catch (error) {
       console.error("Error fetching book details:", error);
@@ -37,7 +37,7 @@ const EditBook = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/auth/${id}`, book, {
+      await axios.put(`https://libarymanagement-dzib.onrender.com/api/auth/${id}`, book, {
         headers: { Authorization: localStorage.getItem("token") },
       });
       alert("Book updated successfully!");
