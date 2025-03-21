@@ -15,7 +15,7 @@ app.use(cors({
     credentials: true,  
     methods: ["GET", "POST", "PUT", "DELETE"],  
     allowedHeaders: ["Content-Type", "Authorization"] 
-}));
+})); 
 
 // MongoDB Connection
 mongoose.connect("mongodb+srv://rigrunner23:1234@cluster0.1xtsq.mongodb.net/", {
