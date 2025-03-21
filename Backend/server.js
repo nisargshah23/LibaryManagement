@@ -11,7 +11,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: ["https://superlative-kelpie-f3d91c.netlify.app"], 
+    origin: ["https://superlative-kelpie-f3d91c.netlify.app","http://localhost:5173"], 
     credentials: true,  
     methods: ["GET", "POST", "PUT", "DELETE"],  
     allowedHeaders: ["Content-Type", "Authorization"] 
