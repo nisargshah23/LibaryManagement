@@ -8,30 +8,37 @@ const bookRoutes = require("./routes/bookRoutes");
 
 const app = express();
 
-// Middleware
-app.use(express.json());
+
+const allowedOrigins = [process.env.FRONTEND_URL || "https://superlative-kelpie-f3d91c.netlify.app"];
 app.use(cors({
-    origin: ["https://superlative-kelpie-f3d91c.netlify.app","http://localhost:5173"], 
-    credentials: true,  
-    methods: ["GET", "POST", "PUT", "DELETE"],  
-    allowedHeaders: ["Content-Type", "Authorization"] 
-})); 
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
-// MongoDB Connection
-mongoose.connect("mongodb+srv://rigrunner23:1234@cluster0.1xtsq.mongodb.net/", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("MongoDB Connected"))
-  .catch(err => {
-      console.error(" MongoDB Error:", err);
-      process.exit(1);
-  });
 
-// API Routes
+app.use(express.json());
+
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log("MongoDB Connected Successfully");
+    } catch (error) {
+        console.error("MongoDB Connection Error:", error);
+        process.exit(1);
+    }
+};
+connectDB();
+
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 
-// Global Error Handling
+
 app.use((err, req, res, next) => {
     console.error(" Server Error:", err.message);
     res.status(500).json({ success: false, message: "Internal Server Error" });
