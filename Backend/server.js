@@ -11,7 +11,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: process.env.ALLOWED_ORIGINS?.split(",") || ["https://libary-management-wjnh.vercel.app"],
+    origin: process.env.ALLOWED_ORIGINS?.split(",") || ["https://67dd597560eed304aede6e52--superlative-kelpie-f3d91c.netlify.app/"],
     credentials: true
 }));
 
