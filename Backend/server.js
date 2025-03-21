@@ -9,7 +9,7 @@ const bookRoutes = require("./routes/bookRoutes");
 const app = express();
 
 
-const allowedOrigins = [process.env.FRONTEND_URL || "https://superlative-kelpie-f3d91c.netlify.app"];
+const allowedOrigins = [process.env.FRONTEND_URL || "https://velvety-sopapillas-159c9a.netlify.app/"];
 app.use(cors({
     origin: allowedOrigins,
     credentials: true,
