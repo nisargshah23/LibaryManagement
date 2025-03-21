@@ -6,11 +6,6 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const bookRoutes = require("./routes/bookRoutes");
 
-if (!process.env.MONGO_URI) {
-    console.error("Missing MONGO_URI in environment variables");
-    process.exit(1);
-}
-
 const app = express();
 
 // Middleware
